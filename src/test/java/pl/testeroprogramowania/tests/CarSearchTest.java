@@ -20,15 +20,7 @@ public class CarSearchTest extends BaseTest {
         carSearchPage.setReturnTime();
         carSearchPage.performSearch();
 
-        /*
-        ResultsPage resultsPage = new ResultsPage(driver);
 
-        Assert.assertTrue(resultsPage.expectedCar.isDisplayed());
-        Assert.assertTrue(resultsPage.expectedLocation.isDisplayed());
-
-        Assert.assertEquals(resultsPage.getCarName(), "Kia Pacanto");
-        Assert.assertEquals(resultsPage.getLocationName(), "Manchester");
-        */
     }
     @Test(dataProvider = "data")
     public void searchForCarToRentWithDataProvider(String city) {
