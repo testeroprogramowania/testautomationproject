@@ -1,10 +1,8 @@
 package pl.testeroprogramowania.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.testeroprogramowania.pages.CarSearchPage;
-import pl.testeroprogramowania.pages.ResultsPage;
 import pl.testeroprogramowania.utils.ExcelImport;
 
 import java.io.IOException;
