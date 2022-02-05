@@ -20,6 +20,6 @@ public class BaseTest {
 
     @AfterMethod
     public void browserTearDown(){
-            driver.quit();
+           // driver.quit();
     }
 }

@@ -22,6 +22,20 @@ public class CarSearchTest extends BaseTest {
 
 
     }
+
+    @Test
+    public void searchForCarToRentWithoutCityName() {
+        CarSearchPage carSearchPage = new CarSearchPage(driver);
+        carSearchPage.clickCarsButton(driver);
+        carSearchPage.clearLocationField();
+        carSearchPage.setDepDate("12/02/2022");
+        carSearchPage.setDepTime();
+        carSearchPage.setReturnDate("16/02/2022");
+        carSearchPage.setReturnTime();
+        carSearchPage.performSearch();
+
+//Uwaga - należy jeszcze sprawdzić czy pojawia się komunikat "Wybierz element z listy"
+    }
     @Test(dataProvider = "data")
     public void searchForCarToRentWithDataProvider(String city) {
         CarSearchPage carSearchPage = new CarSearchPage(driver);

@@ -38,12 +38,19 @@ public class CarSearchPage {
     public void clickCarsButton(WebDriver driver){
         carSearchButton.click();
     }
+
     public void setLocation(String cityName) {
         searchCarSpan.click();
         locationInput.sendKeys(cityName);
         locationInput.sendKeys(Keys.ENTER);
-
     }
+    public void clearLocationField(){
+        searchCarSpan.click();
+        locationInput.clear();
+        locationInput.sendKeys(Keys.ENTER);
+    }
+
+
     public void setDepDate(String depDate){
         carDepart.clear();
         carDepart.sendKeys(depDate);
