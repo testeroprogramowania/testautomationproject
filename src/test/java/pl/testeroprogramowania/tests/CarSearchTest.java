@@ -1,8 +1,10 @@
 package pl.testeroprogramowania.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pl.testeroprogramowania.pages.CarSearchPage;
+import pl.testeroprogramowania.pages.ResultPage;
 import pl.testeroprogramowania.utils.ExcelImport;
 
 import java.io.IOException;
@@ -19,6 +21,10 @@ public class CarSearchTest extends BaseTest {
         carSearchPage.setReturnDate("16/02/2022");
         carSearchPage.setReturnTime();
         carSearchPage.performSearch();
+
+        ResultPage resultPage = new ResultPage(driver);
+        System.out.println(resultPage.getLocationName());
+        Assert.assertEquals(resultPage.getLocationName(), "Manchester");
 
     }
     @Test
