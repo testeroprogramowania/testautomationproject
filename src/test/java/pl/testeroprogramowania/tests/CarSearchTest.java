@@ -22,7 +22,7 @@ public class CarSearchTest extends BaseTest {
 
     }
     @Test
-    public void searchForCarToRentWithWrongDate() {
+    public void searchForCarToRentWithNonExistentDate() {
         CarSearchPage carSearchPage = new CarSearchPage(driver);
         carSearchPage.clickCarsButton(driver);
         carSearchPage.setLocation("Manchester");
@@ -31,8 +31,17 @@ public class CarSearchTest extends BaseTest {
         carSearchPage.setReturnDate("55/14/2022");
         carSearchPage.setReturnTime();
         carSearchPage.performSearch();
-
-
+    }
+    @Test
+    public void searchForCarToRentWithDateFromThePast() {
+        CarSearchPage carSearchPage = new CarSearchPage(driver);
+        carSearchPage.clickCarsButton(driver);
+        carSearchPage.setLocation("Manchester");
+        carSearchPage.setDepDate("18/02/922");
+        carSearchPage.setDepTime();
+        carSearchPage.setReturnDate("18/04/1918");
+        carSearchPage.setReturnTime();
+        carSearchPage.performSearch();
     }
 
     @Test
