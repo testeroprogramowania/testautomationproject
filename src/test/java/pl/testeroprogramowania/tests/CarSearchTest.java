@@ -20,6 +20,18 @@ public class CarSearchTest extends BaseTest {
         carSearchPage.setReturnTime();
         carSearchPage.performSearch();
 
+    }
+    @Test
+    public void searchForCarToRentWithWrongDate() {
+        CarSearchPage carSearchPage = new CarSearchPage(driver);
+        carSearchPage.clickCarsButton(driver);
+        carSearchPage.setLocation("Manchester");
+        carSearchPage.setDepDate("32/02/2022");
+        carSearchPage.setDepTime();
+        carSearchPage.setReturnDate("55/14/2022");
+        carSearchPage.setReturnTime();
+        carSearchPage.performSearch();
+
 
     }
 
