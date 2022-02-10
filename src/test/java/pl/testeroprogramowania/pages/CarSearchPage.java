@@ -17,6 +17,17 @@ public class CarSearchPage {
     @FindBy(xpath = "//div[@id='select2-drop']//input")
     private WebElement locationInput;
 
+    @FindBy(xpath = "//span[contains(text(),'Drop off')]")
+    private WebElement dropOffLocation;
+
+    @FindBy(xpath = "//div[contains(text(),'Manchester')]")
+    private WebElement getDropOffLocationCity;
+
+    @FindBy(name = "dropoffLocation")
+    private WebElement setDropOffLOcation;
+
+
+
     @FindBy(id = "departcar")
     private WebElement carDepart;
 
@@ -44,6 +55,13 @@ public class CarSearchPage {
         locationInput.sendKeys(cityName);
         locationInput.sendKeys(Keys.ENTER);
     }
+    public void setDropOffLocation(String dropOffCityName){
+        setDropOffLOcation.click();
+        getDropOffLocationCity.click();
+        getDropOffLocationCity.clear();
+        locationInput.sendKeys(dropOffCityName);
+        getDropOffLocationCity.sendKeys(Keys.ENTER);
+    }
     public void clearLocationField(){
         searchCarSpan.click();
         locationInput.clear();
@@ -59,6 +77,10 @@ public class CarSearchPage {
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("arguments[0].value='03:30';", pickUpTime);
     }
+    public void setInvDepTime(){
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].value='Early';", pickUpTime);
+    }
     public void setReturnDate(String returnDate){
         carReturn.clear();
         carReturn.sendKeys(returnDate);
@@ -66,6 +88,10 @@ public class CarSearchPage {
     public void setReturnTime(){
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].value='08:30';", dropOffTime);
+    }
+    public void setInvReturnTime(){
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].value='Late';", dropOffTime);
     }
     public void performSearch(){
         pressCarSearchButton.click();

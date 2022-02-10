@@ -27,8 +27,23 @@ public class CarSearchTest extends BaseTest {
         Assert.assertEquals(resultPage.getLocationName(), "Manchester");
 
     }
+    /*
     @Test
-    public void searchForCarToRentWithNonExistentDate() {
+    public void searchForCarToRentDifLocations() {
+        CarSearchPage carSearchPage = new CarSearchPage(driver);
+        carSearchPage.clickCarsButton(driver);
+        carSearchPage.setLocation("Manchester");
+        carSearchPage.setDropOffLocation("Dubai");
+        carSearchPage.setDepDate("15/03/2022");
+        carSearchPage.setDepTime();
+        carSearchPage.setReturnDate("25/03/2022");
+        carSearchPage.setReturnTime();
+        carSearchPage.performSearch();
+
+    }
+    */
+    @Test
+    public void searchWithNonExistentDate() {
         CarSearchPage carSearchPage = new CarSearchPage(driver);
         carSearchPage.clickCarsButton(driver);
         carSearchPage.setLocation("Manchester");
@@ -38,8 +53,33 @@ public class CarSearchTest extends BaseTest {
         carSearchPage.setReturnTime();
         carSearchPage.performSearch();
     }
+
     @Test
-    public void searchForCarToRentWithDateFromThePast() {
+    public void searchWithInvalidDateCharacters() {
+        CarSearchPage carSearchPage = new CarSearchPage(driver);
+        carSearchPage.clickCarsButton(driver);
+        carSearchPage.setLocation("Manchester");
+        carSearchPage.setDepDate("we/t5/woo2");
+        carSearchPage.setDepTime();
+        carSearchPage.setReturnDate("r5e32009");
+        carSearchPage.setReturnTime();
+        carSearchPage.performSearch();
+    }
+
+    @Test
+    public void searchWithInvalidTimeCharacters() {
+        CarSearchPage carSearchPage = new CarSearchPage(driver);
+        carSearchPage.clickCarsButton(driver);
+        carSearchPage.setLocation("Manchester");
+        carSearchPage.setDepDate("22/02/2022");
+        carSearchPage.setInvDepTime();
+        carSearchPage.setReturnDate("15/11/2022");
+        carSearchPage.setInvReturnTime();
+        carSearchPage.performSearch();
+    }
+
+    @Test
+    public void searchWithDateFromThePast() {
         CarSearchPage carSearchPage = new CarSearchPage(driver);
         carSearchPage.clickCarsButton(driver);
         carSearchPage.setLocation("Manchester");
@@ -51,7 +91,7 @@ public class CarSearchTest extends BaseTest {
     }
 
     @Test
-    public void searchForCarToRentWithoutCityName() {
+    public void searchWithoutCityName() {
         CarSearchPage carSearchPage = new CarSearchPage(driver);
         carSearchPage.clickCarsButton(driver);
         carSearchPage.clearLocationField();
@@ -64,7 +104,7 @@ public class CarSearchTest extends BaseTest {
 //Uwaga - należy jeszcze sprawdzić czy pojawia się komunikat "Wybierz element z listy"
     }
     @Test(dataProvider = "data")
-    public void searchForCarToRentWithDataProvider(String city) {
+    public void searchWithDataProvider(String city) {
         CarSearchPage carSearchPage = new CarSearchPage(driver);
         carSearchPage.clickCarsButton(driver);
         carSearchPage.setLocation(city);
