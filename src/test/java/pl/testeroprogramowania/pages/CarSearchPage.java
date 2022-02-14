@@ -43,10 +43,14 @@ public class CarSearchPage {
     @FindBy(xpath = "//*[@id='cars']/form/div[7]/button")
     private WebElement pressCarSearchButton;
 
+    public CarSearchPage(WebDriver driver){
+        PageFactory.initElements(driver,this);
+        this.driver=driver;
+    }
 
     private WebDriver driver;
 
-    public void clickCarsButton(WebDriver driver){
+    public void clickCarsButton(){
         carSearchButton.click();
     }
 
@@ -74,33 +78,32 @@ public class CarSearchPage {
         carDepart.sendKeys(depDate);
     }
     public void setDepTime(){
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript("arguments[0].value='03:30';", pickUpTime);
+        pickUpTime.sendKeys("04:00");
+
     }
     public void setInvDepTime(){
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript("arguments[0].value='Early';", pickUpTime);
+        pickUpTime.sendKeys("Early");
+
     }
     public void setReturnDate(String returnDate){
         carReturn.clear();
         carReturn.sendKeys(returnDate);
     }
     public void setReturnTime(){
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].value='08:30';", dropOffTime);
+        dropOffTime.sendKeys("13:30");
+
     }
     public void setInvReturnTime(){
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].value='Late';", dropOffTime);
+        dropOffTime.sendKeys("Late");
+
     }
     public void performSearch(){
         pressCarSearchButton.click();
     }
 
-    public CarSearchPage(WebDriver driver){
-        PageFactory.initElements(driver,this);
-        this.driver=driver;
-    }
+
+
+
 
 
 }
