@@ -43,6 +43,9 @@ public class CarSearchTest extends BaseTest {
         carSearchPage.setReturnTime("17:45");
         carSearchPage.performSearch();
 
+        ResultPage resultPage = new ResultPage(driver);
+        Assert.assertEquals(resultPage.getResultHeadingText(),"No Results Found");
+
     }
 
     @Test
