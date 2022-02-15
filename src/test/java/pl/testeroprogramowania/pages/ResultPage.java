@@ -14,7 +14,6 @@ public class ResultPage {
 
     @FindBy(xpath = "//h4[contains(@class, 'list_title')]//b")
     private List<WebElement> carList;
-    //Warto pobierać lokalizację czymś bardziej uniwersalnym np. //h4[contains(@Class,'list_title')]/following-sibling::a
 
 
     public ResultPage(WebDriver driver){

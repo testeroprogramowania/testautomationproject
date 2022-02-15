@@ -36,7 +36,7 @@ public class CarSearchTest extends BaseTest {
         CarSearchPage carSearchPage = new CarSearchPage(driver);
         carSearchPage.clickCarsButton();
         carSearchPage.setLocation("Manchester");
-        carSearchPage.setDropOffLocation("Dubai");
+        carSearchPage.setDropOffLocation("Alexandria");
         carSearchPage.setDepDate("15/03/2022");
         carSearchPage.setDepTime("12:45");
         carSearchPage.setReturnDate("25/03/2022");
@@ -104,9 +104,6 @@ public class CarSearchTest extends BaseTest {
         carSearchPage.setReturnTime("17:45");
         carSearchPage.performSearch();
 
-
-
-//Uwaga - należy jeszcze sprawdzić czy pojawia się komunikat "Wybierz element z listy"
     }
     @Test(dataProvider = "data")
     public void searchWithDataProvider(String city) {
