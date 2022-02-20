@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11d377f8-ce1d-4916-9c39-132b008f32c6" name="Changes" comment="Correct flo test Rent Car&#10;Different cities rent Car" />
+    <list default="true" id="11d377f8-ce1d-4916-9c39-132b008f32c6" name="Changes" comment="Add Tours Search Page&#10;Add Tours Search Test">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_02_2022_19_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_02_2022_19_08__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_02_2022_19_08__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_02_2022_19_08__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,12 +78,15 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Laptop\Desktop\ProjektTravels\.idea" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="pl.testeroprogramowania.tests" />
       <recent name="pl.testeroprogramowania.tests.pages" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.CarSearchTest.searchWithoutCityName">
+  <component name="RunManager" selected="TestNG.ToursSearchTest.searchTours">
     <configuration name="CarSearchTest.searchForCarToRent" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="testautomation" />
       <extension name="coverage">
@@ -95,7 +105,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarSearchTest.searchWithoutCityName" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="CarSearchTest.searchWithInvalidDateCharacters" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="testautomation" />
       <extension name="coverage">
         <pattern>
@@ -105,42 +115,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="pl.testeroprogramowania.tests" />
       <option name="MAIN_CLASS_NAME" value="pl.testeroprogramowania.tests.CarSearchTest" />
-      <option name="METHOD_NAME" value="searchWithoutCityName" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FirstTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="testautomation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.testeroprogramowania.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.testeroprogramowania.tests" />
-      <option name="MAIN_CLASS_NAME" value="pl.testeroprogramowania.tests.FirstTest" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FirstTest.openPageChrome" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="testautomation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.testeroprogramowania.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.testeroprogramowania.tests" />
-      <option name="MAIN_CLASS_NAME" value="pl.testeroprogramowania.tests.FirstTest" />
-      <option name="METHOD_NAME" value="openPageChrome" />
+      <option name="METHOD_NAME" value="searchWithInvalidDateCharacters" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -166,13 +141,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ToursSearchTest.searchTours" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="testautomation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.testeroprogramowania.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.testeroprogramowania.tests" />
+      <option name="MAIN_CLASS_NAME" value="pl.testeroprogramowania.tests.ToursSearchTest" />
+      <option name="METHOD_NAME" value="searchTours" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ToursSearchTest.serachTours" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="testautomation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.testeroprogramowania.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.testeroprogramowania.tests" />
+      <option name="MAIN_CLASS_NAME" value="pl.testeroprogramowania.tests.ToursSearchTest" />
+      <option name="METHOD_NAME" value="serachTours" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.CarSearchTest.searchWithoutCityName" />
+        <item itemvalue="TestNG.ToursSearchTest.searchTours" />
+        <item itemvalue="TestNG.ToursSearchTest.serachTours" />
         <item itemvalue="TestNG.CarSearchTest.searchForCarToRent" />
+        <item itemvalue="TestNG.CarSearchTest.searchWithInvalidDateCharacters" />
         <item itemvalue="TestNG.FirstTest.openPageFirefox" />
-        <item itemvalue="TestNG.FirstTest.openPageChrome" />
-        <item itemvalue="TestNG.FirstTest" />
       </list>
     </recent_temporary>
   </component>
@@ -213,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644771833382</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add Tours Search Page&#10;Add Tours Search Test">
+      <created>1645378851585</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645378851585</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -231,6 +249,7 @@
     <MESSAGE value="First commit start project" />
     <MESSAGE value="Correct flo test Rent Car" />
     <MESSAGE value="Correct flo test Rent Car&#10;Different cities rent Car" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correct flo test Rent Car&#10;Different cities rent Car" />
+    <MESSAGE value="Add Tours Search Page&#10;Add Tours Search Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Tours Search Page&#10;Add Tours Search Test" />
   </component>
 </project>
