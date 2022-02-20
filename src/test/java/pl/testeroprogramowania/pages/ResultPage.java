@@ -15,6 +15,10 @@ public class ResultPage {
     @FindBy(xpath = "//h4[contains(@class, 'list_title')]//b")
     private List<WebElement> carList;
 
+    @FindBy(xpath = "//h4[contains(@class, 'list_title')]//b")
+    private List<WebElement> toursList;
+
+
     @FindBy(xpath = "//div[@class='itemscontainer']//h1")
     public WebElement resultHeading;
 
@@ -28,8 +32,14 @@ public class ResultPage {
                 .map(el -> el.getAttribute("textContent"))
                 .collect(Collectors.toList());
     }
+    public List<String> getToursPlace() {
+        return toursList.stream()
+                .map(el -> el.getAttribute("textContent"))
+                .collect(Collectors.toList());
+    }
 
     public String getResultHeadingText(){
         return resultHeading.getText();
     }
+
 }
