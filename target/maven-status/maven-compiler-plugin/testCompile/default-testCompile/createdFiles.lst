@@ -1,0 +1,7 @@
+pl\testeroprogramowania\pages\ResultPage.class
+pl\testeroprogramowania\utils\ExcelImport.class
+pl\testeroprogramowania\tests\BaseTest.class
+pl\testeroprogramowania\pages\CarSearchPage.class
+pl\testeroprogramowania\utils\DriverFactory.class
+pl\testeroprogramowania\tests\CarSearchTest.class
+pl\testeroprogramowania\utils\SeleniumHelper.class
