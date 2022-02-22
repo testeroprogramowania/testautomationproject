@@ -17,6 +17,9 @@ public class ToursSearchPage {
     @FindBy (xpath = "//div[@id='select2-drop']//input")
     private WebElement locationToursInput;
 
+    @FindBy (xpath = "//div[@id='select2-drop']//li")
+    private WebElement noMatchesfound;
+
     @FindBy (xpath = "//span[@class='select2-match']")
     private WebElement locationFind;
 
@@ -29,14 +32,15 @@ public class ToursSearchPage {
     @FindBy (xpath = "//div[@id='s2id_tourtype']//input")
     private WebElement tourType;
 
-    @FindBy(xpath = "//div[@id='tours']//button[@type='submit']")
+    @FindBy (xpath = "//div[@id='tours']//button[@type='submit']")
     private WebElement pressToursSearchButton;
+
+    private WebDriver driver;
 
     public ToursSearchPage (WebDriver driver){
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    private WebDriver driver;
 
     public void clickToursButton(){
         toursSearchButton.click();
@@ -48,19 +52,35 @@ public class ToursSearchPage {
         locationFind.click();
     }
 
+    public void setNoExistCityName(String location){
+        searchByListingOrCityName.click();
+        locationToursInput.sendKeys(location);
+        noMatchesfound.isDisplayed();
+    }
+
+    public void setNoExistToursType (String typeTours){
+        toursSearchButton.click();
+        tourType.sendKeys(typeTours);
+        noMatchesfound.isDisplayed();
+    }
+
     public void setCheckInDate (String checkInDate){
         toursPlaceHolderDate.clear();
         toursPlaceHolderDate.sendKeys(checkInDate);
+    }
+
+    public void clearDate(){
+        toursPlaceHolderDate.clear();
     }
 
     public void setNumbersOfGuests(String numbersOfGuests){
         choiceOfTheNumberOfGuests.sendKeys(numbersOfGuests);
     }
 
-    public void setTypeTour(String typeTour){
+    public void setTypeTour(String typeTours){
         toursSearchButton.click();
-        tourType.sendKeys(typeTour);
-        String xpath = String.format("//span[@class='select2-match' and text()='%s']",typeTour);
+        tourType.sendKeys(typeTours);
+        String xpath = String.format("//span[@class='select2-match' and text()='%s']",typeTours);
         driver.findElement(By.xpath(xpath)).click();
     }
 
