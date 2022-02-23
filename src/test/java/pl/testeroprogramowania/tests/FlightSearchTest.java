@@ -14,6 +14,7 @@ public class FlightSearchTest extends BaseTest{
                 .setTripType("Round Trip")
                 .setDepartureDate("2022-03-01")
                 .setReturnDate("2022-03-25")
+                .setClass()
                 .performSearch();
 
 

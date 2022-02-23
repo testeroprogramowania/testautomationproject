@@ -7,10 +7,10 @@ public class FlightResultPage {
 
     private WebDriver driver;
 
-    public FlightResultPage(WebDriver driver){
+    public FlightResultPage(WebDriver driver) {
 
-        PageFactory.initElements(driver,this);
-        this.driver=driver;
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
 }

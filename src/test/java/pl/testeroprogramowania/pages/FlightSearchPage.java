@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import pl.testeroprogramowania.utils.SeleniumHelper;
 
 public class FlightSearchPage {
@@ -28,7 +29,7 @@ public class FlightSearchPage {
     @FindBy(name = "arrival")
     private WebElement arrivalDateInput;
 
-    @FindBy(name ="totalManualPassenger")
+    @FindBy(name = "totalManualPassenger")
     private WebElement numberOfPassengers;
 
     @FindBy(xpath = "//select[@name='mchildren']")
@@ -43,6 +44,9 @@ public class FlightSearchPage {
     @FindBy(xpath = "//div[@class='bgfade col-md-3 col-xs-12 search-button']//button[@type='submit']")
     private WebElement searchButton;
 
+    @FindBy(xpath = "//select[@name='cabinclass']")
+    private WebElement selectClass;
+
 
     private WebDriver driver;
 
@@ -52,10 +56,17 @@ public class FlightSearchPage {
     }
 
     public FlightSearchPage setTripType(String tripType) {
-        WebElement trip = driver.findElement(By.xpath("//label[contains(text(), '"+tripType+"')]"));
+        WebElement trip = driver.findElement(By.xpath("//label[contains(text(), '" + tripType + "')]"));
         trip.click();
         return this;
 
+    }
+
+    public FlightSearchPage setClass(){
+        WebElement selectplaneclass = selectClass;
+        Select clases = new Select(selectplaneclass);
+        clases.selectByValue("first");
+        return this;
     }
 
     public FlightSearchPage setLocations(String depCity, String arrivCity) {
@@ -83,22 +94,24 @@ public class FlightSearchPage {
         arrivalDateInput.sendKeys(returnDate);
         return this;
     }
-    public FlightSearchPage passengerclick(){
+
+    public FlightSearchPage passengerclick() {
         numberOfPassengers.click();
         setAdults.click();
-       setAdults.sendKeys("3");
+        setAdults.sendKeys("3");
         //setChild.click();
         //setChild.sendKeys("2");
         //setInfant.click();
         //setInfant.sendKeys("2");
         return this;
     }
-    public FlightSearchPage setNumberOfPassengers(int adults, int child, int infant){
+
+    public FlightSearchPage setNumberOfPassengers(int adults, int child, int infant) {
         numberOfPassengers.click();
         return this;
     }
 
-    public FlightResultPage performSearch(){
+    public FlightResultPage performSearch() {
         searchButton.click();
         return new FlightResultPage(driver);
     }
