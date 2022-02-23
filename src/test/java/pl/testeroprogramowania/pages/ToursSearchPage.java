@@ -73,7 +73,8 @@ public class ToursSearchPage {
         toursPlaceHolderDate.clear();
     }
 
-    public void setNumbersOfGuests(String numbersOfGuests){
+    public void setNumbersOfGuests(String numbersOfGuests)
+    {
         choiceOfTheNumberOfGuests.sendKeys(numbersOfGuests);
     }
 
