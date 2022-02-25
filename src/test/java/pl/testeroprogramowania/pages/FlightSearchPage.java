@@ -32,14 +32,17 @@ public class FlightSearchPage {
     @FindBy(name = "totalManualPassenger")
     private WebElement numberOfPassengers;
 
-    @FindBy(xpath = "//select[@name='mchildren']")
+    @FindBy(xpath = "//select[@name='madult']")
     private WebElement setAdults;
 
-    @FindBy(name = "mchildren")
+    @FindBy(xpath = "//select[@name='mchildren']")
     private WebElement setChild;
 
-    @FindBy(name = "minfant")
+    @FindBy(xpath = "//select[@name='minfant']")
     private WebElement setInfant;
+
+    @FindBy(id = "sumManualPassenger")
+    private WebElement guestsDoneButton;
 
     @FindBy(xpath = "//div[@class='bgfade col-md-3 col-xs-12 search-button']//button[@type='submit']")
     private WebElement searchButton;
@@ -62,10 +65,9 @@ public class FlightSearchPage {
 
     }
 
-    public FlightSearchPage setClass(){
-        WebElement selectplaneclass = selectClass;
-        Select clases = new Select(selectplaneclass);
-        clases.selectByValue("first");
+    public FlightSearchPage setClass(String className) {
+        Select classes = new Select(selectClass);
+        classes.selectByValue(className);
         return this;
     }
 
@@ -95,25 +97,25 @@ public class FlightSearchPage {
         return this;
     }
 
-    public FlightSearchPage passengerclick() {
-        numberOfPassengers.click();
-        setAdults.click();
-        setAdults.sendKeys("3");
-        //setChild.click();
-        //setChild.sendKeys("2");
-        //setInfant.click();
-        //setInfant.sendKeys("2");
-        return this;
-    }
 
     public FlightSearchPage setNumberOfPassengers(int adults, int child, int infant) {
         numberOfPassengers.click();
+        Select adultCount = new Select(setAdults);
+        adultCount.selectByValue(String.valueOf(adults));
+
+        Select childCount = new Select(setChild);
+        childCount.selectByValue(String.valueOf(child));
+
+        Select infantCount = new Select(setInfant);
+        infantCount.selectByValue(String.valueOf(infant));
+
+        guestsDoneButton.click();
         return this;
     }
 
-    public FlightResultPage performSearch() {
+    public ResultPage performSearch() {
         searchButton.click();
-        return new FlightResultPage(driver);
+        return new ResultPage(driver);
     }
 
 

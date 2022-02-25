@@ -11,16 +11,31 @@ import java.util.stream.Collectors;
 public class ResultPage {
 
 
-
     @FindBy(xpath = "//h4[contains(@class, 'list_title')]//b")
     private List<WebElement> carList;
+
+    @FindBy(xpath = "//button[@id='bookbtn']")
+    private List<WebElement> bookButtonList;
 
     @FindBy(xpath = "//div[@class='itemscontainer']//h1")
     public WebElement resultHeading;
 
+    @FindBy(xpath = "//div[contains(text(), 'Dates Availability')]")
+    public WebElement flightsResultHeading;
 
-    public ResultPage(WebDriver driver){
+
+    private WebDriver driver;
+
+    public ResultPage(WebDriver driver)
+    {
         PageFactory.initElements(driver,this);
+        
+    }
+
+    public List<String> getResultList() {
+        return bookButtonList.stream()
+                .map(el -> el.getAttribute("textContent"))
+                .collect(Collectors.toList());
     }
 
     public List<String> getCarModels() {
@@ -31,5 +46,14 @@ public class ResultPage {
 
     public String getResultHeadingText(){
         return resultHeading.getText();
+    }
+    public String getFlightResultHeadingText(){
+        return flightsResultHeading.getText();
+    }
+
+    public BookFlightPage bookAFlight(int numberOnTheList){
+        bookButtonList.get(numberOnTheList).click();
+        return new BookFlightPage(driver);
+
     }
 }

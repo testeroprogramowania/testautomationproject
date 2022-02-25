@@ -1,30 +1,47 @@
 package pl.testeroprogramowania.tests;
 
-import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.testeroprogramowania.pages.FlightSearchPage;
 import pl.testeroprogramowania.pages.HomePage;
+import pl.testeroprogramowania.pages.ResultPage;
 
 public class FlightSearchTest extends BaseTest{
 
     @Test
     public void flightSearchTest(){
         new HomePage(driver).openFlightSearchPage()
-                .setLocations("WAW","PMI")
+                .setLocations("NUE","BCN")
                 .setTripType("Round Trip")
-                .setDepartureDate("2022-03-01")
-                .setReturnDate("2022-03-25")
-                .setClass()
+                .setDepartureDate("2022-03-12")
+                .setReturnDate("2022-03-20")
+                .setClass("business")
+                .setNumberOfPassengers(1,3,3)
                 .performSearch();
+
+        ResultPage resultPage = new ResultPage(driver);
+        Assert.assertEquals(resultPage.getFlightResultHeadingText(), "DATES AVAILABILITY") ;
 
 
 
         /*Tips
         Location can by selected by City name or by ICAO code.
-        TripType options: "Round Trip", "One Way". Use copy/paste.
+        setTripType options: "Round Trip", "One Way". Use copy/paste.
+        setClass options: "economy", "business","first".
 
 
         */
+    }
+    @Test
+    public void flightSearchAndBookTest() {
+        new HomePage(driver).openFlightSearchPage()
+                .setLocations("NUE", "BCN")
+                .setTripType("Round Trip")
+                .setDepartureDate("2022-03-12")
+                .setReturnDate("2022-03-20")
+                .setClass("business")
+                .setNumberOfPassengers(1, 3, 3)
+                .performSearch()
+                .bookAFlight(1);
     }
 
 }
