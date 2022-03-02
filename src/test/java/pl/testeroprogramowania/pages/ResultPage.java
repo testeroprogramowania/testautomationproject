@@ -26,17 +26,16 @@ public class ResultPage {
 
     private WebDriver driver;
 
-    public ResultPage(WebDriver driver)
-    {
-        PageFactory.initElements(driver,this);
-        
+    public ResultPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver=driver;
     }
 
-    public List<String> getResultList() {
+   /* public List<String> getResultList() {
         return bookButtonList.stream()
                 .map(el -> el.getAttribute("textContent"))
                 .collect(Collectors.toList());
-    }
+    }*/
 
     public List<String> getCarModels() {
         return carList.stream()
@@ -44,14 +43,15 @@ public class ResultPage {
                 .collect(Collectors.toList());
     }
 
-    public String getResultHeadingText(){
+    public String getResultHeadingText() {
         return resultHeading.getText();
     }
-    public String getFlightResultHeadingText(){
+
+    public String getFlightResultHeadingText() {
         return flightsResultHeading.getText();
     }
 
-    public BookFlightPage bookAFlight(int numberOnTheList){
+    public BookFlightPage bookAFlight(int numberOnTheList) {
         bookButtonList.get(numberOnTheList).click();
         return new BookFlightPage(driver);
 

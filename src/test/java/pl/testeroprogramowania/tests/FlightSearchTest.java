@@ -39,9 +39,11 @@ public class FlightSearchTest extends BaseTest{
                 .setDepartureDate("2022-03-12")
                 .setReturnDate("2022-03-20")
                 .setClass("business")
-                .setNumberOfPassengers(1, 3, 3)
+                .setNumberOfPassengers(2, 1, 1)
                 .performSearch()
-                .bookAFlight(1);
+                .bookAFlight(1)
+                .fillTheForm()
+                .proceedToPayment();
     }
 
 }

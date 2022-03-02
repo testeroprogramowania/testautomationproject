@@ -35,58 +35,62 @@ public class CarSearchPage {
     @FindBy(xpath = "//div[@id='cars']//button[@type='submit']")
     private WebElement pressCarSearchButton;
 
-    public CarSearchPage(WebDriver driver){
-        PageFactory.initElements(driver,this);
-        this.driver=driver;
+    public CarSearchPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
     private WebDriver driver;
 
-    public void clickCarsButton(){
+    public void clickCarsButton() {
         carSearchButton.click();
     }
+
     public void setLocation(String cityName) {
         searchCarSpan.click();
         locationInput.sendKeys(cityName);
         locationInput.sendKeys(Keys.ENTER);
     }
-    public void setDropOffLocation(String dropOffCityName){
+
+    public void setDropOffLocation(String dropOffCityName) {
         carSearchButton.click();
         dropOffLocationInput.sendKeys(dropOffCityName);
         String xpath = String.format("//span[@class='select2-match' and text()='%s']", dropOffCityName);
         driver.findElement(By.xpath(xpath)).click();
     }
-    public void clearLocationField(){
+
+    public void clearLocationField() {
         searchCarSpan.click();
         locationInput.clear();
         locationInput.sendKeys(Keys.ENTER);
     }
-    public void setDepDate(String depDate){
+
+    public void setDepDate(String depDate) {
         carDepart.clear();
         carDepart.sendKeys(depDate);
     }
-    public void setDepTime(String depTime){
+
+    public void setDepTime(String depTime) {
         pickUpTime.sendKeys(depTime);
     }
-    public void setReturnDate(String returnDate){
+
+    public void setReturnDate(String returnDate) {
         carReturn.clear();
         carReturn.sendKeys(returnDate);
     }
-    public void setReturnTime(String returnTime){
+
+    public void setReturnTime(String returnTime) {
         dropOffTime.sendKeys(returnTime);
     }
-    public void setInvTime(String invDepTime, String invReturnTime){
+
+    public void setInvTime(String invDepTime, String invReturnTime) {
         pickUpTime.sendKeys(invDepTime);
         dropOffTime.sendKeys(invReturnTime);
     }
-    public ResultPage performSearch(){
+
+    public ResultPage performSearch() {
         pressCarSearchButton.click();
         return new ResultPage(driver);
     }
-
-
-
-
-
 
 }
