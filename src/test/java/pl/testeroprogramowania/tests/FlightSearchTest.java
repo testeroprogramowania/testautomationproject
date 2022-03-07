@@ -84,5 +84,9 @@ public class FlightSearchTest extends BaseTest{
         softAssert.assertTrue(errors.contains("Last Name is required"));
 
     }
+    @Test
+    public void registerNewUserTest(){
+        new HomePage(driver).openSignUpForm();
+    }
 
 }
