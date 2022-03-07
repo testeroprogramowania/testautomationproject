@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import pl.testeroprogramowania.models.Customer;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,12 +16,12 @@ public class BookFlightPage {
     private WebElement guestButton;
 
     @FindBy(id = "signintab")
-    private WebElement sigInButton;
+    private WebElement signInButton;
 
     @FindBy(xpath = "//input[@name='firstname']")
     private WebElement firstNameInput;
 
-    @FindBy(name ="lastname")
+    @FindBy(name = "lastname")
     private WebElement lastNameInput;
 
     @FindBy(name = "email")
@@ -38,21 +39,28 @@ public class BookFlightPage {
     @FindBy(xpath = "//select[@name='country']")
     private WebElement countryName;
 
-    @FindBy(xpath = "//button[@name='guest']")
+    @FindBy(xpath = "//button[contains(text(), 'CONFIRM THIS BOOKING')]")
     private WebElement confirmButton;
 
     @FindBy(xpath = "//div[@class='alert alert-danger']")
     private List<WebElement> registerFormErrors;
+
+    @FindBy(id = "username")
+    private WebElement userEmailInput;
+
+    @FindBy(id = "password")
+    private WebElement userPassword;
+
 
     private WebDriver driver;
 
 
     public BookFlightPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver=driver;
+        this.driver = driver;
     }
 
-public BookFlightPage fillTheForm(){
+    public PaymentPage fillTheForm() {
         guestButton.click();
         firstNameInput.click();
         firstNameInput.sendKeys("Quality");
@@ -65,19 +73,28 @@ public BookFlightPage fillTheForm(){
         String country = "Germany";
         Select setCountry = new Select(countryName);
         setCountry.selectByVisibleText(country);
+        confirmButton.click();
 
-        return this;
-        }
+        return new PaymentPage(driver);
+    }
+
+    public PaymentPage signIn(Customer customer) {
+        signInButton.click();
+        userEmailInput.sendKeys(customer.getEmail());
+        userPassword.sendKeys(customer.getPassword());
+        confirmButton.click();
+        return new PaymentPage(driver);
+    }
+
 
     public List<String> getErrors() {
         return registerFormErrors.stream().map(WebElement::getText).collect(Collectors.toList());
 
     }
 
-
-
-        public PaymentPage proceedToPayment(){
+    public PaymentPage proceedToPayment() {
         confirmButton.click();
         return new PaymentPage(driver);
-        }
+
+    }
 }

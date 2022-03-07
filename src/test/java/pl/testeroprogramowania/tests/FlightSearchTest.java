@@ -3,6 +3,7 @@ package pl.testeroprogramowania.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import pl.testeroprogramowania.models.Customer;
 import pl.testeroprogramowania.pages.BookFlightPage;
 import pl.testeroprogramowania.pages.HomePage;
 import pl.testeroprogramowania.pages.ResultPage;
@@ -58,9 +59,30 @@ public class FlightSearchTest extends BaseTest{
                 .setNumberOfPassengers(2, 1, 1)
                 .performSearch()
                 .bookAFlight(1)
-                .fillTheForm()
-                .proceedToPayment();
+                .fillTheForm();
+
     }
+
+    @Test
+    public void flightSearchAndBookTestAsExistentUser() {
+        Customer customer = new Customer();
+        customer.setEmail("adamnuessler@gmx.de");
+        customer.setPassword("nuessler@gmx.de");
+
+        new HomePage(driver).openFlightSearchPage()
+                .setLocations("NUE", "BCN")
+                .setTripType("Round Trip")
+                .setClass("business")
+                .setDepartureDate("2022-03-12")
+                .setReturnDate("2022-03-20")
+                .setNumberOfPassengers(1, 0, 0)
+                .performSearch()
+                .bookAFlight(1)
+                .signIn(customer);
+
+    }
+    // Tip: Run NewUserTest to create an accout.
+
 
     @Test
     public void bookingTestWithoutDetails() {
@@ -74,6 +96,7 @@ public class FlightSearchTest extends BaseTest{
                 .performSearch()
                 .bookAFlight(1)
                 .proceedToPayment();
+
 
         BookFlightPage bookFlightPage = new BookFlightPage(driver);
         List<String> errors = bookFlightPage.getErrors();
