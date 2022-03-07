@@ -1,6 +1,5 @@
 package pl.testeroprogramowania.pages;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookFlightPage {
 
@@ -41,6 +41,9 @@ public class BookFlightPage {
     @FindBy(xpath = "//button[@name='guest']")
     private WebElement confirmButton;
 
+    @FindBy(xpath = "//div[@class='alert alert-danger']")
+    private List<WebElement> registerFormErrors;
+
     private WebDriver driver;
 
 
@@ -65,6 +68,13 @@ public BookFlightPage fillTheForm(){
 
         return this;
         }
+
+    public List<String> getErrors() {
+        return registerFormErrors.stream().map(WebElement::getText).collect(Collectors.toList());
+
+    }
+
+
 
         public PaymentPage proceedToPayment(){
         confirmButton.click();

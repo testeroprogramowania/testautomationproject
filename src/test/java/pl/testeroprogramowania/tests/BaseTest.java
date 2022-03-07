@@ -12,7 +12,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void browserSetup(){
-        driver= DriverFactory.getDriver("chrome");
+        driver= DriverFactory.getDriver("firefox");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://www.kurs-selenium.pl/demo/");

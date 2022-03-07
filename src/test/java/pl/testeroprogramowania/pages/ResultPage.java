@@ -20,8 +20,14 @@ public class ResultPage {
     @FindBy(xpath = "//div[@class='itemscontainer']//h1")
     public WebElement resultHeading;
 
-    @FindBy(xpath = "//div[contains(text(), 'Dates Availability')]")
+    @FindBy(xpath = "//div[@class='panel-heading'] [contains(text(), 'Available Flights')]")
     public WebElement flightsResultHeading;
+
+    @FindBy(xpath = "//div//input[@id='nonstop']")
+    private WebElement nonstopFilter;
+
+    @FindBy(id = "nonstop1")
+    private WebElement transitFilter;
 
 
     private WebDriver driver;
@@ -31,11 +37,6 @@ public class ResultPage {
         this.driver=driver;
     }
 
-   /* public List<String> getResultList() {
-        return bookButtonList.stream()
-                .map(el -> el.getAttribute("textContent"))
-                .collect(Collectors.toList());
-    }*/
 
     public List<String> getCarModels() {
         return carList.stream()
@@ -44,10 +45,12 @@ public class ResultPage {
     }
 
     public String getResultHeadingText() {
+
         return resultHeading.getText();
     }
 
     public String getFlightResultHeadingText() {
+
         return flightsResultHeading.getText();
     }
 
@@ -55,5 +58,9 @@ public class ResultPage {
         bookButtonList.get(numberOnTheList).click();
         return new BookFlightPage(driver);
 
+    }
+    public ResultPage setFilters(){
+        nonstopFilter.click();
+        return this;
     }
 }
