@@ -1,5 +1,6 @@
 package pl.testeroprogramowania.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static javax.swing.UIManager.get;
 
 public class ResultPage {
 
@@ -32,6 +35,7 @@ public class ResultPage {
 
     private WebDriver driver;
 
+
     public ResultPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver=driver;
@@ -55,6 +59,8 @@ public class ResultPage {
     }
 
     public BookFlightPage bookAFlight(int numberOnTheList) {
+      JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("arguments[0].scrollIntoView();", bookButtonList.get(numberOnTheList));
         bookButtonList.get(numberOnTheList).click();
         return new BookFlightPage(driver);
 
