@@ -21,16 +21,16 @@ public class ResultPage {
     private List<WebElement> bookButtonList;
 
     @FindBy(xpath = "//div[@class='itemscontainer']//h1")
-    public WebElement resultHeading;
+    private WebElement resultHeading;
 
     @FindBy(xpath = "//div[@class='panel-heading'] [contains(text(), 'Available Flights')]")
-    public WebElement flightsResultHeading;
+    private WebElement flightsResultHeading;
 
-    @FindBy(xpath = "//div//input[@id='nonstop']")
-    private WebElement nonstopFilter;
+    @FindBy(xpath = "//div[@class='alert alert-danger']")
+    private WebElement noResultsAlert;
 
-    @FindBy(id = "nonstop1")
-    private WebElement transitFilter;
+    @FindBy(xpath = "//div[@class='icheckbox_square-grey']")
+    private List <WebElement> filterSearch;
 
 
     private WebDriver driver;
@@ -49,13 +49,15 @@ public class ResultPage {
     }
 
     public String getResultHeadingText() {
-
         return resultHeading.getText();
     }
 
     public String getFlightResultHeadingText() {
-
         return flightsResultHeading.getText();
+    }
+
+    public WebElement getNoResultsAlert() {
+        return noResultsAlert;
     }
 
     public BookFlightPage bookAFlight(int numberOnTheList) {
@@ -66,8 +68,18 @@ public class ResultPage {
 
     }
 
-    public ResultPage setFilters() {
-        nonstopFilter.click();
+    public ResultPage nonStopFilter() {
+        filterSearch.get(0).click();
         return this;
     }
+    public ResultPage transitFilter() {
+        filterSearch.get(1).click();
+        return this;
+    }
+    public ResultPage refundableFilter() {
+        filterSearch.get(2).click();
+        return this;
+    }
+
+
 }

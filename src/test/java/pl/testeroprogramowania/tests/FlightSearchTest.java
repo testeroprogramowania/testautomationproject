@@ -6,45 +6,67 @@ import org.testng.asserts.SoftAssert;
 import pl.testeroprogramowania.models.Customer;
 import pl.testeroprogramowania.pages.BookFlightPage;
 import pl.testeroprogramowania.pages.HomePage;
+import pl.testeroprogramowania.pages.PaymentPage;
 import pl.testeroprogramowania.pages.ResultPage;
 
 import java.util.List;
 
-public class FlightSearchTest extends BaseTest{
+public class FlightSearchTest extends BaseTest {
 
     @Test
-    public void flightSearchTest(){
+    public void flightSearchTest() {
         new HomePage(driver).openFlightSearchPage()
-                .setLocations("NUE","BCN")
+                .setLocations("NUE", "BCN")
                 .setTripType("Round Trip")
                 .setClass("first")
                 .setDepartureDate("2022-03-12")
                 .setReturnDate("2022-03-20")
-                .setNumberOfPassengers(1,3,3)
+                .setNumberOfPassengers(1, 3, 3)
                 .performSearch();
 
         ResultPage resultPage = new ResultPage(driver);
-        Assert.assertEquals(resultPage.getFlightResultHeadingText(), "AVAILABLE FLIGHTS") ;
+        Assert.assertEquals(resultPage.getFlightResultHeadingText(), "AVAILABLE FLIGHTS");
         /*Tips
         Location can by selected by City name or by ICAO code.
         setTripType options: "Round Trip", "One Way". Use copy/paste.
         setClass options: "economy", "business","first".
         */
     }
+
     @Test
-    public void flightSearchTestWithFilter(){
+    public void flightSearchTestWithFilter() {
         new HomePage(driver).openFlightSearchPage()
-                .setLocations("NUE","BCN")
+                .setLocations("NUE", "BCN")
                 .setTripType("Round Trip")
                 .setClass("business")
                 .setDepartureDate("2022-03-12")
                 .setReturnDate("2022-03-20")
-                .setNumberOfPassengers(1,3,3)
+                .setNumberOfPassengers(1, 3, 3)
                 .performSearch()
-                .setFilters();
+                .nonStopFilter()
+                .transitFilter()
+                .refundableFilter();
 
         ResultPage resultPage = new ResultPage(driver);
-        Assert.assertEquals(resultPage.getFlightResultHeadingText(), "AVAILABLE FLIGHTS") ;
+        Assert.assertEquals(resultPage.getFlightResultHeadingText(), "AVAILABLE FLIGHTS");
+
+    }
+
+    @Test
+    public void flightSearchTestFirstWithChildren() {
+        new HomePage(driver).openFlightSearchPage()
+                .setLocations("NUE", "BCN")
+                .setTripType("Round Trip")
+                .setClass("first")
+                .setDepartureDate("2022-04-12")
+                .setReturnDate("2022-04-21")
+                .setNumberOfPassengers(1, 3, 3)
+                .performSearch();
+
+
+        ResultPage resultPage = new ResultPage(driver);
+        Assert.assertEquals(resultPage.getFlightResultHeadingText(), "AVAILABLE FLIGHTS");
+        Assert.assertEquals(resultPage.getNoResultsAlert().getText(), "No Results Found");
 
     }
 
@@ -60,6 +82,7 @@ public class FlightSearchTest extends BaseTest{
                 .performSearch()
                 .bookAFlight(1)
                 .fillTheForm();
+
 
     }
 
@@ -107,9 +130,6 @@ public class FlightSearchTest extends BaseTest{
         softAssert.assertTrue(errors.contains("Last Name is required"));
 
     }
-    @Test
-    public void registerNewUserTest(){
-        new HomePage(driver).openSignUpForm();
-    }
+
 
 }

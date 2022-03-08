@@ -19,4 +19,8 @@ public class PaymentPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
+
+    public WebElement getInvoiceDiv() {
+        return invoiceDiv;
+    }
 }
