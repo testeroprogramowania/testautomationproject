@@ -9,9 +9,12 @@ public class PaymentPage {
     @FindBy(xpath = "//div[contains(text(), 'Invoice')]")
     private WebElement invoiceDiv;
 
+    @FindBy(xpath = "//button[contains(text(),'Pay on Arrival')]")
+    private WebElement payOnArrivalButton;
 
 
     private WebDriver driver;
+
     public PaymentPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;

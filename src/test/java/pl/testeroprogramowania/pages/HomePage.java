@@ -26,10 +26,11 @@ public class HomePage {
         this.driver = driver;
     }
 
-public FlightSearchPage openFlightSearchPage(){
+    public FlightSearchPage openFlightSearchPage() {
         searchFlightButton.click();
         return new FlightSearchPage(driver);
-}
+    }
+
     public SignUpPage openSignUpForm() {
         myAccountButtonLink.stream().filter(WebElement::isDisplayed)
                 .findFirst().ifPresent(WebElement::click);

@@ -62,9 +62,7 @@ public class BookFlightPage {
 
     public PaymentPage fillTheForm() {
         guestButton.click();
-        firstNameInput.click();
         firstNameInput.sendKeys("Quality");
-        lastNameInput.click();
         lastNameInput.sendKeys("Assurance");
         emailInput.sendKeys("test@mordor.waw.pl");
         confirmEmailInput.sendKeys("test@mordor.waw.pl");
@@ -74,7 +72,6 @@ public class BookFlightPage {
         Select setCountry = new Select(countryName);
         setCountry.selectByVisibleText(country);
         confirmButton.click();
-
         return new PaymentPage(driver);
     }
 

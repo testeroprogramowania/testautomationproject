@@ -51,8 +51,6 @@ public class FlightSearchPage {
     private WebElement selectClass;
 
 
-
-
     private WebDriver driver;
 
     public FlightSearchPage(WebDriver driver) {
@@ -114,7 +112,6 @@ public class FlightSearchPage {
         guestsDoneButton.click();
         return this;
     }
-
 
 
     public ResultPage performSearch() {

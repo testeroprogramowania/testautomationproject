@@ -34,7 +34,8 @@ public class SignUpPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public LoggedUserPage fillTheForm(Customer customer){
+
+    public LoggedUserPage fillTheForm(Customer customer) {
         firstNameInput.sendKeys(customer.getFirstName());
         lastNameInput.sendKeys(customer.getLastName());
         phoneInput.sendKeys(customer.getPhone());

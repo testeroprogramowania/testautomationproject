@@ -38,7 +38,7 @@ public class ResultPage {
 
     public ResultPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver=driver;
+        this.driver = driver;
     }
 
 
@@ -59,13 +59,14 @@ public class ResultPage {
     }
 
     public BookFlightPage bookAFlight(int numberOnTheList) {
-      JavascriptExecutor js = (JavascriptExecutor) driver;
-       js.executeScript("arguments[0].scrollIntoView();", bookButtonList.get(numberOnTheList));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", bookButtonList.get(numberOnTheList));
         bookButtonList.get(numberOnTheList).click();
         return new BookFlightPage(driver);
 
     }
-    public ResultPage setFilters(){
+
+    public ResultPage setFilters() {
         nonstopFilter.click();
         return this;
     }

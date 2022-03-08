@@ -17,7 +17,7 @@ public class FlightSearchTest extends BaseTest{
         new HomePage(driver).openFlightSearchPage()
                 .setLocations("NUE","BCN")
                 .setTripType("Round Trip")
-                .setClass("business")
+                .setClass("first")
                 .setDepartureDate("2022-03-12")
                 .setReturnDate("2022-03-20")
                 .setNumberOfPassengers(1,3,3)
@@ -75,7 +75,7 @@ public class FlightSearchTest extends BaseTest{
                 .setClass("business")
                 .setDepartureDate("2022-03-12")
                 .setReturnDate("2022-03-20")
-                .setNumberOfPassengers(1, 0, 0)
+                .setNumberOfPassengers(1, 0, 2)
                 .performSearch()
                 .bookAFlight(1)
                 .signIn(customer);

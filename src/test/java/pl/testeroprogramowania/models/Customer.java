@@ -2,11 +2,12 @@ package pl.testeroprogramowania.models;
 
 public class Customer {
 
-    private String firstName;
-    private String lastName;
-    private String phone;
-    private String email;
-    private String password;
+    private String firstName = "Adam";
+    private String lastName = "Nüßler";
+    private String phone = "+49123123123";
+    private String email = "adamnuessler@gmx.de";
+    private String password = "nuessler@gmx.de";
+
 
     public String getFirstName() {
         return firstName;
