@@ -8,7 +8,7 @@ import pl.testeroprogramowania.pages.HomePage;
 
 public class NewUserTest extends BaseTest {
     @Test
-    public void newUserTest(){
+    public void registerNewUser(){
         Customer customer = new Customer();
         customer.setEmail("adamnuessler5@gmx.de");
 
@@ -20,4 +20,21 @@ public class NewUserTest extends BaseTest {
 
         Assert.assertEquals(loggedUserHeading.getText(),"Hi, "+customer.getFirstName()+" "+ customer.getLastName());
     }
+
+    @Test
+    public void registerWithExistentEmail(){
+        Customer customer = new Customer();
+        customer.setEmail("adamnuessler5@gmx.de"); //existent email.
+        customer.setFirstName("Євген");
+        customer.setLastName("Грабовий");
+
+
+        WebElement signUpErrors = new HomePage(driver)
+                .openSignUpForm()
+                .fillTheFormWithExistentEmail(customer)
+                .getSignUpErrors();
+
+       Assert.assertEquals(signUpErrors.getText(),"Email Already Exists.");
+    }
+
 }
