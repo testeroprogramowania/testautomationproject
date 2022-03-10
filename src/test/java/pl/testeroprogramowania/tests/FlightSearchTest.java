@@ -18,9 +18,9 @@ public class FlightSearchTest extends BaseTest {
         new HomePage(driver).openFlightSearchPage()
                 .setLocations("NUE", "BCN")
                 .setTripType("Round Trip")
-                .setClass("first")
-                .setDepartureDate("2022-03-12")
-                .setReturnDate("2022-03-20")
+                .setClass("economy")
+                .setDepartureDate("2022-04-12")
+                .setReturnDate("2022-04-20")
                 .setNumberOfPassengers(1, 3, 3)
                 .performSearch();
 
@@ -31,6 +31,23 @@ public class FlightSearchTest extends BaseTest {
         setTripType options: "Round Trip", "One Way". Use copy/paste.
         setClass options: "economy", "business","first".
         */
+    }
+
+    @Test
+    public void searchWithDateFromThePast() {
+        new HomePage(driver).openFlightSearchPage()
+                .setLocations("NUE", "BCN")
+                .setTripType("Round Trip")
+                .setClass("economy")
+                .setDepartureDate("2020-02-12")
+                .setReturnDate("2020-02-20")
+                .setNumberOfPassengers(1, 0, 0)
+                .performSearch();
+
+        ResultPage resultPage = new ResultPage(driver);
+        Assert.assertEquals(resultPage.getFlightResultHeadingText(), "AVAILABLE FLIGHTS");
+
+
     }
 
     @Test
@@ -49,6 +66,7 @@ public class FlightSearchTest extends BaseTest {
 
         ResultPage resultPage = new ResultPage(driver);
         Assert.assertEquals(resultPage.getFlightResultHeadingText(), "AVAILABLE FLIGHTS");
+
 
     }
 

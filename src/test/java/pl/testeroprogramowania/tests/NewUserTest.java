@@ -24,7 +24,7 @@ public class NewUserTest extends BaseTest {
     @Test
     public void registerWithExistentEmail(){
         Customer customer = new Customer();
-        customer.setEmail("adamnuessler5@gmx.de"); //existent email.
+        customer.setEmail("adamnuessler5@gmx.de"); //Tip: Use an existent email!
         customer.setFirstName("Євген");
         customer.setLastName("Грабовий");
 
