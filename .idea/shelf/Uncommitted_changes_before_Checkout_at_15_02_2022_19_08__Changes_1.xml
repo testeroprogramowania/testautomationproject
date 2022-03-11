@@ -1,0 +1,9 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_15_02_2022_19_08_[Changes]1" date="1644948519380" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_02_2022_19_08_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 15.02.2022 19:08 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="testautomationproject-main/target/test-classes/pl/testeroprogramowania/tests/CarRentTest.class" />
+    <option name="AFTER_PATH" value="testautomationproject-main/target/test-classes/pl/testeroprogramowania/tests/CarRentTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_02_2022_19_08_[Changes]1/CarRentTest.class" />
+  </binary>
+</changelist>
