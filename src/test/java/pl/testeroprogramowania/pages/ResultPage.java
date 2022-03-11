@@ -29,8 +29,21 @@ public class ResultPage {
     @FindBy(xpath = "//div[@class='alert alert-danger']")
     private WebElement noResultsAlert;
 
-    @FindBy(xpath = "//div[@class='icheckbox_square-grey']")
-    private List <WebElement> filterSearch;
+    @FindBy(xpath = "//input[@id='nonstop']/..")
+    private WebElement nonStopFil;
+
+    @FindBy(xpath = "//input[@id='nonstop1']/..")
+    private WebElement transitFil;
+
+    @FindBy(xpath = "//input[@id='Refundable']/..")
+    private WebElement refundableFil;
+
+    @FindBy(xpath = "//input[@id='checkairLufthansa CityLine']/..")
+    private WebElement lufthansaFil;
+
+
+
+
 
 
     private WebDriver driver;
@@ -69,15 +82,19 @@ public class ResultPage {
     }
 
     public ResultPage nonStopFilter() {
-        filterSearch.get(0).click();
+        nonStopFil.click();
         return this;
     }
     public ResultPage transitFilter() {
-        filterSearch.get(1).click();
+        transitFil.click();
         return this;
     }
     public ResultPage refundableFilter() {
-        filterSearch.get(2).click();
+        refundableFil.click();
+        return this;
+    }
+    public ResultPage lufthansaFilter() {
+        lufthansaFil.click();
         return this;
     }
 

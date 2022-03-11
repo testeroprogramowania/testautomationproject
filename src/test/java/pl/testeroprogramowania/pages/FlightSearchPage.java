@@ -62,7 +62,6 @@ public class FlightSearchPage {
         WebElement trip = driver.findElement(By.xpath("//label[contains(text(), '" + tripType + "')]"));
         trip.click();
         return this;
-
     }
 
     public FlightSearchPage setClass(String className) {
@@ -113,11 +112,9 @@ public class FlightSearchPage {
         return this;
     }
 
-
     public ResultPage performSearch() {
         searchButton.click();
         return new ResultPage(driver);
     }
-
 
 }

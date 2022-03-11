@@ -18,7 +18,6 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='  Sign Up']")
     private List<WebElement> signUpLink;
 
-
     private WebDriver driver;
 
     public HomePage(WebDriver driver) {
@@ -38,6 +37,4 @@ public class HomePage {
         return new SignUpPage(driver);
     }
 
-
 }
-
